@@ -7,9 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 type ChatInputProps = {
   onSend: (text: string) => void;
   disabled?: boolean;
+  placeholder?: string;
 };
 
-export default function ChatInput({ onSend, disabled }: ChatInputProps) {
+export default function ChatInput({ onSend, disabled, placeholder }: ChatInputProps) {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -41,13 +42,14 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
       </AnimatePresence>
 
       <div className={`relative transition-all duration-300 rounded-2xl p-2 shadow-2xl flex items-center gap-2 border backdrop-blur-2xl ${isFocused ? 'bg-[#111111]/80 border-indigo-500/50 shadow-indigo-500/20' : 'bg-[#111111]/60 border-white/10 shadow-black/50'}`}>
-        <div className="flex items-center gap-2 px-2 text-indigo-400">
-          <Sparkles className="w-5 h-5" />
+        <div className="flex items-center gap-2 px-3 border-r border-white/10 text-indigo-400">
+          <Sparkles className="w-4 h-4" />
+          <span className="text-xs font-semibold tracking-wide whitespace-nowrap hidden sm:block">Core v2</span>
         </div>
         
         <input 
           type="text" 
-          placeholder="I'm thinking of pivoting to enterprise sales..."
+          placeholder={placeholder || "I'm thinking of pivoting to enterprise sales..."}
           className="flex-1 bg-transparent border-none outline-none text-zinc-100 placeholder-zinc-500 text-sm md:text-base py-3 px-2"
           onFocus={() => setIsFocused(true)}
           onBlur={() => setTimeout(() => setIsFocused(false), 200)} // delay to allow clicks on options
