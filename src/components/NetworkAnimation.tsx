@@ -40,7 +40,7 @@ export function NetworkAnimation() {
       opacity: 0.4,
       transition: {
         pathLength: { delay: custom, type: "spring", duration: 1.5, bounce: 0 },
-        opacity: { delay: custom, duration: 0.2 },
+        opacity: { delay: custom, duration: 0.2 } as const
       },
     }),
   };
