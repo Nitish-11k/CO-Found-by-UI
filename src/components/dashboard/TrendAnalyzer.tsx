@@ -89,7 +89,11 @@ export default function TrendAnalyzer({ active }: TrendAnalyzerProps) {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } }
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { type: "spring", stiffness: 100, damping: 15 } as const 
+    }
   };
 
   return (
