@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 type PersonaColumnProps = {
   active: boolean;
@@ -14,15 +14,19 @@ export default function PersonaColumns({ active }: PersonaColumnProps) {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+        staggerChildren: 0.2,
+      },
+    },
+  } satisfies Variants;
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } }
-  };
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 100, damping: 15 } as const,
+    },
+  } satisfies Variants;
 
   const personas = [
     {

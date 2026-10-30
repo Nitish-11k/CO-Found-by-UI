@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export function NetworkAnimation() {
@@ -39,11 +39,11 @@ export function NetworkAnimation() {
       pathLength: 1,
       opacity: 0.4,
       transition: {
-        pathLength: { delay: custom, type: "spring", duration: 1.5, bounce: 0 },
-        opacity: { delay: custom, duration: 0.2 } as const
+        pathLength: { delay: custom, type: "spring", duration: 1.5, bounce: 0 } as const,
+        opacity: { delay: custom, duration: 0.2 } as const,
       },
     }),
-  };
+  } satisfies Variants;
 
   return (
     <div className="absolute inset-0 z-0 flex items-start justify-end opacity-40 pointer-events-none overflow-hidden">
